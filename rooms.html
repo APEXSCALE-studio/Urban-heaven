@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+</head>
+
+<body>
+  
+</body>
+
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rooms &amp; Suites — Urban Haven Lodge</title>
+<meta name="description" content="Explore Urban Haven Lodge's Standard, Deluxe, Executive Suite and Family Room categories — with galleries, amenities, pricing and live availability.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<div class="page-loader"><div class="loader-mark" aria-hidden="true"></div></div>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <nav class="nav" aria-label="Primary">
+    <a href="index.html" class="brand">
+      <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 21V9l8-5 8 5v12"/><path d="M9 21v-6h6v6"/></svg></span>
+      Urban Haven Lodge
+    </a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="rooms.html" class="active">Rooms</a></li>
+      <li><a href="booking.html">Book Now</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="theme-toggle" aria-label="Toggle dark mode"></button>
+      <a href="booking.html" class="btn btn-gold btn-sm">Book Now</a>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false"></button>
+    </div>
+  </nav>
+</header>
+
+<main id="main">
+
+  <section class="page-hero">
+    <div class="container">
+      <p class="breadcrumb"><a href="index.html">Home</a> / Rooms</p>
+      <p class="eyebrow">Accommodation</p>
+      <h1>Rooms &amp; suites for every kind of stay.</h1>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+
+      <div class="room-search-bar">
+        <label class="hidden" for="room-search">Search rooms</label>
+        <input type="search" id="room-search" placeholder="Search rooms (e.g. deluxe, family)…">
+        <label class="hidden" for="room-capacity-filter">Filter by guests</label>
+        <select id="room-capacity-filter">
+          <option value="any">Any capacity</option>
+          <option value="2">2 guests</option>
+          <option value="3">3 guests</option>
+          <option value="5">5 guests</option>
+        </select>
+      </div>
+
+      <!-- ===================== STANDARD ROOM ===================== -->
+      <article class="room-detail" id="standard" data-room-card data-name="standard room" data-capacity="2">
+        <div class="gallery">
+          <div class="gallery-main"><img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?q=80&w=1200&auto=format&fit=crop" alt="Standard Room main view"></div>
+          <div class="gallery-thumbs">
+            <img class="gallery-thumb active" src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?q=80&w=300&auto=format&fit=crop" data-full="https://images.unsplash.com/photo-1611892440504-42a792e24d32?q=80&w=1200&auto=format&fit=crop" alt="Standard Room bed">
+            <img class="gallery-thumb" src="https://images.unsplash.com/photo-1595576508898-0ad5c879a061?q=80&w=300&auto=format&fit=crop" data-full="https://images.unsplash.com/photo-1595576508898-0ad5c879a061?q=80&w=1200&auto=format&fit=crop" alt="Standard Room desk area">
+            <img class="gallery-thumb" src="https://images.unsplash.com/photo-1631049035182-249067d7618e?q=80&w=300&auto=format&fit=crop" data-full="https://images.unsplash.com/photo-1631049035182-249067d7618e?q=80&w=1200&auto=format&fit=crop" alt="Standard Room bathroom">
+            <img class="gallery-thumb" src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?q=80&w=300&auto=format&fit=crop" data-full="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?q=80&w=1200&auto=format&fit=crop" alt="Standard Room window view">
+          </div>
+        </div>
+        <div>
+          <div class="room-detail-head">
+            <div>
+              <h2>Standard Room</h2>
+              <span class="badge available" style="position:static; display:inline-block;">Available</span>
+            </div>
+            <div class="room-detail-price">K650 <span>/ night</span></div>
+          </div>
+          <p>A compact, efficient room designed for solo travellers and short stays — comfortable, quiet, and thoughtfully finished.</p>
+          <div class="spec-row">
+            <span class="spec">👤 Sleeps 2</span>
+            <span class="spec">📐 22 m²</span>
+            <span class="spec">🛏️ 1 Queen bed</span>
+          </div>
+          <div class="amenity-tags">
+            <span>Free Wi-Fi</span><span>Air conditioning</span><span>Work desk</span><span>Flat-screen TV</span><span>En-suite bathroom</span>
+          </div>
+          <div class="room-actions">
+            <a href="booking.html?room=standard" class="btn btn-primary">Book This Room</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- ===================== DELUXE ROOM ===================== -->
+      <article class="room-detail" id="deluxe" data-room-card data-name="deluxe room" data-capacity="2">
+        <div class="gallery">
+          <div class="gallery-main"><img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?q=80&w=1200&auto=format&fit=crop" alt="Deluxe Room main view"></div>
+          <div class="gallery-thumbs">
+            <img class="gallery-thumb active" src="https://images.unsplash.com/photo-1590490360182-c33d57733427?q=80&w=300&auto=format&fit=crop" data-full="https://images.unsplash.com/photo-1590490360182-c33d57733427?q=80&w=1200&auto=format&fit=crop" alt="Deluxe Room bed">
+            <img class="gallery-thumb" src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?q=80&w=300&auto=format&fit=crop" data-full="https://images.unsplash.com/photo-1618773928121-c32242e63f39?q=80&w=1200&auto=format&fit=crop" alt="Deluxe Room seating area">
+            <img class="gallery-thumb" src="https://images.unsplash.com/photo-1591088398332-8a7791972843?q=80&w=300&auto=format&fit=crop" data-full="https://images.unsplash.com/photo-1591088398332-8a7791972843?q=80&w=1200&auto=format&fit=crop" alt="Deluxe Room bathtub">
+            <img class="gallery-thumb" src="https://images.unsplash.com/photo-1611048267451-e6ed903d4a38?q=80&w=300&auto=format&fit=crop" data-full="https://images.unsplash.com/photo-1611048267451-e6ed903d4a38?q=80&w=1200&auto=format&fit=crop" alt="Deluxe Room balcony">
+          </div>
+        </div>
+        <div>
+          <div class="room-detail-head">
+            <div>
+              <h2>Deluxe Room</h2>
+              <span class="badge available" style="position:static; display:inline-block;">Available</span>
+            </div>
+            <div class="room-detail-price">K980 <span>/ night</span></div>
+          </div>
+          <p>More space and a softer, more residential feel — ideal for couples or business travellers staying a few extra nights.</p>
+          <div class="spec-row">
+            <span class="spec">👤 Sleeps 2</span>
+            <span class="spec">📐 30 m²</span>
+            <span class="spec">🛏️ 1 King bed</span>
+          </div>
+          <div class="amenity-tags">
+            <span>Free Wi-Fi</span><span>Air conditioning</span><span>Bathtub</span><span>Mini-fridge</span><span>Seating area</span><span>Garden view</span>
+          </div>
+          <div class="room-actions">
+            <a href="booking.html?room=deluxe" class="btn btn-primary">Book This Room</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- ===================== EXECUTIVE SUITE ===================== -->
+      <article class="room-detail" id="executive" data-room-card data-name="executive suite" data-capacity="3">
+        <div class="gallery">
+          <div class="gallery-main"><img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?q=80&w=1200&auto=format&fit=crop" alt="Executive Suite main view"></div>
+          <div class="gallery-thumbs">
+            <img class="gallery-thumb active" src="https://images.unsplash.com/photo-1582719508461-905c673771fd?q=80&w=300&auto=format&fit=crop" data-full="https://images.unsplash.com/photo-1582719508461-905c673771fd?q=80&w=1200&auto=format&fit=crop" alt="Executive Suite lounge">
+            <img class="gallery-thumb" src="https://images.unsplash.com/photo-1560185127-6ed189bf02f4?q=80&w=300&auto=format&fit=crop" data-full="https://images.unsplash.com/photo-1560185127-6ed189bf02f4?q=80&w=1200&auto=format&fit=crop" alt="Executive Suite workspace">
+            <img class="gallery-thumb" src="https://images.unsplash.com/photo-1590490360182-c33d57733427?q=80&w=300&auto=format&fit=crop" data-full="https://images.unsplash.com/photo-1590490360182-c33d57733427?q=80&w=1200&auto=format&fit=crop" alt="Executive Suite bedroom">
+            <img class="gallery-thumb" src="https://images.unsplash.com/photo-1591088398332-8a7791972843?q=80&w=300&auto=format&fit=crop" data-full="https://images.unsplash.com/photo-1591088398332-8a7791972843?q=80&w=1200&auto=format&fit=crop" alt="Executive Suite bathroom">
+          </div>
+        </div>
+        <div>
+          <div class="room-detail-head">
+            <div>
+              <h2>Executive Suite</h2>
+              <span class="badge limited" style="position:static; display:inline-block;">Limited Availability</span>
+            </div>
+            <div class="room-detail-price">K1,650 <span>/ night</span></div>
+          </div>
+          <p>A separate lounge and dedicated workspace make this our top pick for longer business stays and meetings on the go.</p>
+          <div class="spec-row">
+            <span class="spec">👤 Sleeps 3</span>
+            <span class="spec">📐 46 m²</span>
+            <span class="spec">🛏️ 1 King bed + sofabed</span>
+          </div>
+          <div class="amenity-tags">
+            <span>Free Wi-Fi</span><span>Private lounge</span><span>Work desk</span><span>Nespresso machine</span><span>Bathtub &amp; rain shower</span><span>Priority check-in</span>
+          </div>
+          <div class="room-actions">
+            <a href="booking.html?room=executive" class="btn btn-primary">Book This Room</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- ===================== FAMILY ROOM ===================== -->
+      <article class="room-detail" id="family" data-room-card data-name="family room" data-capacity="5">
+        <div class="gallery">
+          <div class="gallery-main"><img src="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?q=80&w=1200&auto=format&fit=crop" alt="Family Room main view"></div>
+          <div class="gallery-thumbs">
+            <img class="gallery-thumb active" src="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?q=80&w=300&auto=format&fit=crop" data-full="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?q=80&w=1200&auto=format&fit=crop" alt="Family Room bedroom">
+            <img class="gallery-thumb" src="https://images.unsplash.com/photo-1560185008-a33f5c1a3b1f?q=80&w=300&auto=format&fit=crop" data-full="https://images.unsplash.com/photo-1560185008-a33f5c1a3b1f?q=80&w=1200&auto=format&fit=crop" alt="Family Room second bedroom">
+            <img class="gallery-thumb" src="https://images.unsplash.com/photo-1595576508898-0ad5c879a061?q=80&w=300&auto=format&fit=crop" data-full="https://images.unsplash.com/photo-1595576508898-0ad5c879a061?q=80&w=1200&auto=format&fit=crop" alt="Family Room living area">
+            <img class="gallery-thumb" src="https://images.unsplash.com/photo-1631049035182-249067d7618e?q=80&w=300&auto=format&fit=crop" data-full="https://images.unsplash.com/photo-1631049035182-249067d7618e?q=80&w=1200&auto=format&fit=crop" alt="Family Room bathroom">
+          </div>
+        </div>
+        <div>
+          <div class="room-detail-head">
+            <div>
+              <h2>Family Room</h2>
+              <span class="badge available" style="position:static; display:inline-block;">Available</span>
+            </div>
+            <div class="room-detail-price">K1,250 <span>/ night</span></div>
+          </div>
+          <p>Two connected bedrooms and a shared living space, built for families or small groups travelling together.</p>
+          <div class="spec-row">
+            <span class="spec">👤 Sleeps 5</span>
+            <span class="spec">📐 58 m²</span>
+            <span class="spec">🛏️ 2 Bedrooms</span>
+          </div>
+          <div class="amenity-tags">
+            <span>Free Wi-Fi</span><span>2 Bathrooms</span><span>Living area</span><span>Mini-fridge</span><span>Extra bedding on request</span><span>Garden courtyard access</span>
+          </div>
+          <div class="room-actions">
+            <a href="booking.html?room=family" class="btn btn-primary">Book This Room</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container text-center">
+      <h2>Not sure which room fits your trip?</h2>
+      <p style="max-width:44ch; margin:0 auto var(--space-4);">Reach out and our team will help you pick the right room for your dates and group size.</p>
+      <a href="contact.html" class="btn btn-primary">Contact Us</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="brand" style="margin-bottom:1rem;">
+          <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" width="20" height="20"><path d="M4 21V9l8-5 8 5v12"/><path d="M9 21v-6h6v6"/></svg></span>
+          Urban Haven Lodge
+        </div>
+        <p style="color:rgba(255,255,255,0.65); max-width:32ch;">A modern, elegant city lodge in Kabulonga, Lusaka — built for every kind of traveller.</p>
+        <div class="social-row" aria-label="Social media">
+          <a href="#" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 22v-8.4h2.8l.4-3.3h-3.2V8.2c0-.95.27-1.6 1.63-1.6H17V3.5A22 22 0 0 0 14.5 3c-2.44 0-4.1 1.49-4.1 4.22V10.3H7.6v3.3h2.8V22h3.1z"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
+          <a href="#" aria-label="X (Twitter)"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M4 4l16 16M20 4L4 20"/></svg></a>
+          <a href="https://wa.me/260974656749" aria-label="WhatsApp"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 1 0 4.2 19.1L22 22l-1-5.6A10 10 0 0 0 12 2zm0 2a8 8 0 0 1 6.8 12.2l-.2.3.6 3.2-3.3-.9-.3.2A8 8 0 1 1 12 4z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h5>Explore</h5>
+        <a href="about.html">About Us</a>
+        <a href="rooms.html">Rooms &amp; Suites</a>
+        <a href="booking.html">Book Now</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div>
+        <h5>Contact</h5>
+        <a href="mailto:apexscale86@gmail.com">apexscale86@gmail.com</a>
+        <a href="tel:+260974656749">+260 97 465 6749</a>
+        <a href="#">Kabulonga, Lusaka, Zambia</a>
+      </div>
+      <div>
+        <h5>Stay Updated</h5>
+        <p style="color:rgba(255,255,255,0.65); font-size:0.9rem;">Offers and lodge news, occasionally.</p>
+        <form class="newsletter-form">
+          <label class="hidden" for="newsletter-email">Email address</label>
+          <input id="newsletter-email" type="email" name="email" placeholder="you@email.com" required>
+          <button type="submit" class="btn btn-gold btn-sm">Join</button>
+        </form>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Urban Haven Lodge. Demo project — not a real business.</span>
+      <span>Built by Apexscale Studio · <a href="admin.html" style="color:rgba(255,255,255,0.5);">Staff Login</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="assets/js/data-store.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

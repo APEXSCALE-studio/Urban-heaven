@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Dashboard — Urban Haven Lodge</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/admin.css">
+<style>
+  .demo-note { background:#a5822f; color:#fff; font-size:0.78rem; text-align:center; padding:6px 10px; }
+  .section-view { display:none; }
+  .section-view.active { display:block; }
+  .modal-backdrop { display:none; }
+  .modal-backdrop.show { display:flex; }
+  .loading-row td { text-align:center; color:var(--text-soft); padding:2rem; }
+</style>
+</head>
+<body class="admin-body">
+
+<div class="demo-note">Backed by a real Supabase database — bookings made on the public site show up here live, from any device.</div>
+
+<!-- ===================== LOGIN VIEW ===================== -->
+<div class="login-screen" id="login-view">
+  <div class="login-card">
+    <span class="brand-mark" aria-hidden="true" style="width:56px;height:56px; margin:0 auto;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" width="28" height="28" style="color:var(--color-primary);"><path d="M4 21V9l8-5 8 5v12"/><path d="M9 21v-6h6v6"/></svg>
+    </span>
+    <h1 class="text-center" style="font-size:1.4rem; margin-top:var(--space-3);">Urban Haven Lodge</h1>
+    <p class="text-center hint" style="margin-bottom:var(--space-4);">Admin Dashboard</p>
+    <div id="login-error" class="alert alert-error hidden"></div>
+    <form id="login-form" novalidate>
+      <div class="form-group" style="margin-bottom:var(--space-3);">
+        <label for="login-email">Email address</label>
+        <input type="email" id="login-email" required autocomplete="username" value="tommylungu39@gmail.com">
+      </div>
+      <div class="form-group" style="margin-bottom:var(--space-4);">
+        <label for="login-password">Password</label>
+        <input type="password" id="login-password" required autocomplete="current-password" value="ChangeMe123!">
+      </div>
+      <button type="submit" class="btn btn-primary btn-block" id="login-btn">Log In</button>
+    </form>
+    <p class="hint text-center" style="margin-top:var(--space-4);">Demo credentials are pre-filled — just click Log In.</p>
+  </div>
+</div>
+
+<!-- ===================== APP VIEW ===================== -->
+<div id="app-view" class="hidden">
+  <div class="admin-shell">
+    <aside class="admin-sidebar" id="admin-sidebar">
+      <div class="admin-brand">
+        <span style="display:flex;align-items:center;gap:0.6rem;">
+          <span class="brand-mark" aria-hidden="true" style="border-color:var(--color-accent);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" width="18" height="18"><path d="M4 21V9l8-5 8 5v12"/><path d="M9 21v-6h6v6"/></svg>
+          </span>
+          Urban Haven
+        </span>
+      </div>
+      <nav class="admin-nav">
+        <div class="group-label">Overview</div>
+        <a href="#" data-section="dashboard" class="active">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>
+          Dashboard
+        </a>
+        <div class="group-label">Operations</div>
+        <a href="#" data-section="bookings">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+          Bookings
+        </a>
+        <a href="#" data-section="rooms">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 21V9l8-5 8 5v12"/><path d="M9 21v-6h6v6"/></svg>
+          Rooms
+        </a>
+        <a href="#" data-section="customers">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+          Customers
+        </a>
+        <div class="group-label">Insights</div>
+        <a href="#" data-section="reports">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18M8 17V9m4 8V5m4 12v-6"/></svg>
+          Reports
+        </a>
+        <div class="group-label">System</div>
+        <a href="#" data-section="settings">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/></svg>
+          Settings
+        </a>
+        <a href="index.html" target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6M10 14 21 3"/></svg>
+          View Site
+        </a>
+      </nav>
+    </aside>
+
+    <div>
+      <header class="admin-topbar">
+        <button class="sidebar-toggle-btn" id="admin-sidebar-toggle" aria-label="Toggle menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+        </button>
+        <h1 id="page-title" style="font-size:1.1rem; margin:0; flex:1;">Dashboard</h1>
+        <div class="admin-user">
+          <button class="theme-toggle" aria-label="Toggle dark mode"></button>
+          <div class="avatar" id="user-avatar">A</div>
+          <div>
+            <div style="font-weight:600;" id="user-name">—</div>
+            <div style="font-size:0.75rem; color:var(--text-soft); text-transform:capitalize;" id="user-role">—</div>
+          </div>
+          <button class="icon-btn" id="logout-btn" aria-label="Log out" title="Log out">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg>
+          </button>
+        </div>
+      </header>
+
+      <main class="admin-main">
+        <div id="flash-area"></div>
+        <div class="section-view active" id="section-dashboard"></div>
+        <div class="section-view" id="section-bookings"></div>
+        <div class="section-view" id="section-rooms"></div>
+        <div class="section-view" id="section-customers"></div>
+        <div class="section-view" id="section-reports"></div>
+        <div class="section-view" id="section-settings"></div>
+      </main>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="assets/js/data-store.js"></script>
+<script src="assets/js/admin-app.js"></script>
+</body>
+</html>

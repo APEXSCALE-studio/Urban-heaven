@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+</head>
+
+<body>
+  
+</body>
+
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book Your Stay — Urban Haven Lodge</title>
+<meta name="description" content="Book your room at Urban Haven Lodge, Kabulonga, Lusaka. Select dates, choose a room, and confirm your reservation in minutes.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<div class="page-loader"><div class="loader-mark" aria-hidden="true"></div></div>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <nav class="nav" aria-label="Primary">
+    <a href="index.html" class="brand">
+      <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 21V9l8-5 8 5v12"/><path d="M9 21v-6h6v6"/></svg></span>
+      Urban Haven Lodge
+    </a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="rooms.html">Rooms</a></li>
+      <li><a href="booking.html" class="active">Book Now</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="theme-toggle" aria-label="Toggle dark mode"></button>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false"></button>
+    </div>
+  </nav>
+</header>
+
+<main id="main">
+
+  <section class="page-hero">
+    <div class="container">
+      <p class="breadcrumb"><a href="index.html">Home</a> / Book Now</p>
+      <p class="eyebrow">Reservation</p>
+      <h1>Book your stay at Urban Haven Lodge</h1>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+
+      <div class="booking-steps">
+        <div class="step-pill active"><span class="num">1</span> Stay details</div>
+        <div class="step-pill"><span class="num">2</span> Your details</div>
+        <div class="step-pill"><span class="num">3</span> Confirmation</div>
+      </div>
+
+      <div class="booking-layout">
+
+        <form id="booking-form" class="card-panel" novalidate>
+
+          <h3>Stay details</h3>
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="check-in">Check-in date *</label>
+              <input type="date" id="check-in" name="check_in" required>
+            </div>
+            <div class="form-group">
+              <label for="check-out">Check-out date *</label>
+              <input type="date" id="check-out" name="check_out" required>
+              <span class="field-error" id="date-error">Check-out must be after check-in.</span>
+            </div>
+            <div class="form-group">
+              <label for="room-type">Room type *</label>
+              <select id="room-type" name="room_type" required>
+                <option value="">Select a room</option>
+                <option value="standard">Standard Room — K650/night</option>
+                <option value="deluxe">Deluxe Room — K980/night</option>
+                <option value="executive">Executive Suite — K1,650/night</option>
+                <option value="family">Family Room — K1,250/night</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="guests">Number of guests *</label>
+              <input type="number" id="guests" name="guests" min="1" max="5" value="1" required>
+            </div>
+            <div class="form-group full">
+              <span id="availability-note" class="status-tag" style="display:inline-block;">Select dates and a room to check availability.</span>
+            </div>
+          </div>
+
+          <h3 style="margin-top:var(--space-5);">Your details</h3>
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="full-name">Full name *</label>
+              <input type="text" id="full-name" name="full_name" required autocomplete="name">
+            </div>
+            <div class="form-group">
+              <label for="email">Email address *</label>
+              <input type="email" id="email" name="email" required autocomplete="email">
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone number *</label>
+              <input type="tel" id="phone" name="phone" placeholder="+260 9XX XXX XXX" required autocomplete="tel">
+            </div>
+            <div class="form-group">
+              <label for="id-number">National ID / Passport No.</label>
+              <input type="text" id="id-number" name="id_number">
+            </div>
+            <div class="form-group full">
+              <label for="special-requests">Special requests</label>
+              <textarea id="special-requests" name="special_requests" placeholder="Late check-in, dietary needs, accessibility requirements…"></textarea>
+              <span class="hint">Optional — we'll do our best to accommodate.</span>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block" style="margin-top:var(--space-4);">Confirm Booking</button>
+          <p class="hint text-center" style="margin-top:var(--space-2);">You won't be charged online — payment is arranged directly with the lodge.</p>
+        </form>
+
+        <aside class="card-panel summary-panel">
+          <h3>Booking summary</h3>
+          <div class="room-thumb-row">
+            <img id="summary-thumb" src="assets/images/room-standard-1.jpg" alt="" onerror="this.style.display='none'">
+            <div>
+              <div id="summary-room" style="font-weight:600;">Select a room</div>
+              <div id="summary-rate" style="font-size:0.85rem; color:var(--text-soft);">—</div>
+            </div>
+          </div>
+          <div class="summary-row"><span>Nights</span><span class="val" id="summary-nights">—</span></div>
+          <div class="summary-row total"><span>Estimated total</span><span class="val" id="summary-total">K 0</span></div>
+          <p class="hint" style="margin-top:var(--space-3);">Final total is confirmed by the lodge and may include applicable taxes.</p>
+        </aside>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom" style="border-top:none; margin-top:0;">
+      <span>&copy; 2026 Urban Haven Lodge. Demo project — not a real business.</span>
+      <span><a href="mailto:apexscale86@gmail.com" style="color:var(--color-accent-light);">apexscale86@gmail.com</a> · +260 97 465 6749</span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="assets/js/data-store.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/booking.js"></script>
+</body>
+</html>

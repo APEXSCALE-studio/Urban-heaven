@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Booking Confirmed — Urban Haven Lodge</title>
+<meta name="description" content="Your Urban Haven Lodge booking reference and confirmation details.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <nav class="nav" aria-label="Primary">
+    <a href="index.html" class="brand">
+      <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 21V9l8-5 8 5v12"/><path d="M9 21v-6h6v6"/></svg></span>
+      Urban Haven Lodge
+    </a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="rooms.html">Rooms</a></li>
+      <li><a href="booking.html">Book Now</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="theme-toggle" aria-label="Toggle dark mode"></button>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false"></button>
+    </div>
+  </nav>
+</header>
+
+<main id="main">
+  <section class="section">
+    <div class="container">
+      <div class="confirmation-box card-panel">
+        <div class="confirmation-icon">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>
+        </div>
+        <h1>Booking received</h1>
+        <p>Thank you — your reservation request has been submitted. A confirmation email will follow shortly.</p>
+        <div class="ref-code" id="ref-code">UHL-XXXXXX</div>
+        <p>
+          <span class="status-tag status-pending" id="status-tag">Pending Confirmation</span>
+        </p>
+        <div id="booking-details" class="hidden" style="text-align:left; margin-top:var(--space-5);">
+          <div class="summary-row"><span>Guest name</span><span class="val" id="d-name">—</span></div>
+          <div class="summary-row"><span>Room</span><span class="val" id="d-room">—</span></div>
+          <div class="summary-row"><span>Check-in</span><span class="val" id="d-checkin">—</span></div>
+          <div class="summary-row"><span>Check-out</span><span class="val" id="d-checkout">—</span></div>
+          <div class="summary-row total"><span>Total</span><span class="val" id="d-total">—</span></div>
+        </div>
+        <p class="hint" style="margin-top:var(--space-5);">Keep this reference number handy — you'll need it if you contact the lodge about your booking.</p>
+        <div class="hero-ctas" style="justify-content:center; margin-top:var(--space-3);">
+          <a href="index.html" class="btn btn-outline">Back to Home</a>
+          <a href="contact.html" class="btn btn-primary">Contact Us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom" style="border-top:none; margin-top:0;">
+      <span>&copy; 2026 Urban Haven Lodge. Demo project — not a real business.</span>
+      <span><a href="mailto:apexscale86@gmail.com" style="color:var(--color-accent-light);">apexscale86@gmail.com</a> · +260 97 465 6749</span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="assets/js/data-store.js"></script>
+<script src="assets/js/main.js"></script>
+<script>
+  // Read the booking reference from the query string (?ref=UHL-XXXXXX)
+  // and look it up in the local data store (assets/js/data-store.js).
+  (function () {
+    var params = new URLSearchParams(window.location.search);
+    var ref = params.get('ref');
+    if (!ref) return;
+    document.getElementById('ref-code').textContent = ref;
+
+    window.UHLData.getBookingByReference(ref).then(function (b) {
+      if (!b) return;
+      var statusTag = document.getElementById('status-tag');
+      statusTag.textContent = b.status.replace('_', ' ').replace(/\b\w/g, function (c) { return c.toUpperCase(); });
+      statusTag.className = 'status-tag status-' + b.status;
+      document.getElementById('d-name').textContent = b.guestName;
+      document.getElementById('d-room').textContent = b.roomName;
+      document.getElementById('d-checkin').textContent = b.checkIn;
+      document.getElementById('d-checkout').textContent = b.checkOut;
+      document.getElementById('d-total').textContent = 'K ' + Number(b.totalAmount).toLocaleString();
+      document.getElementById('booking-details').classList.remove('hidden');
+    }).catch(function () {});
+  })();
+</script>
+</body>
+</html>
