@@ -1,0 +1,100 @@
+/* =========================================================================
+   URBAN HAVEN LODGE — ADMIN DASHBOARD STYLESHEET
+   Loaded in addition to style.css on every /backend/admin/*.php view
+   ========================================================================= */
+
+.admin-body { background: var(--color-bg); min-height: 100vh; }
+
+.admin-shell { display: grid; grid-template-columns: 1fr; min-height: 100vh; }
+@media (min-width: 960px) { .admin-shell { grid-template-columns: 260px 1fr; } }
+
+/* --- Sidebar --- */
+.admin-sidebar {
+  background: var(--color-primary-dark); color: rgba(255,255,255,0.82);
+  padding: var(--space-3); position: static; height: auto; overflow-y: visible;
+}
+.sidebar-toggle-btn {
+  background: none; border: 1px solid var(--border); border-radius: var(--radius-sm);
+  width: 38px; height: 38px; display: flex; align-items: center; justify-content: center; color: var(--text);
+}
+@media (min-width: 960px) { .sidebar-toggle-btn { display: none; } }
+
+@media (min-width: 960px) {
+  .admin-sidebar { padding: var(--space-4); position: sticky; top: 0; height: 100vh; overflow-y: auto; }
+}
+@media (max-width: 959px) {
+  .admin-sidebar .admin-nav { max-height: 0; overflow: hidden; transition: max-height var(--transition); }
+  .admin-sidebar.open-mobile .admin-nav { max-height: 600px; }
+  .admin-brand { display: flex; align-items: center; justify-content: space-between; }
+}
+.admin-brand { display: flex; align-items: center; gap: 0.6rem; color: #fff; font-family: var(--font-display); font-size: 1.15rem; padding: var(--space-2) var(--space-2) var(--space-5); }
+.admin-nav a {
+  display: flex; align-items: center; gap: 0.7rem; padding: 0.75rem 0.9rem; border-radius: var(--radius-sm);
+  font-size: 0.9rem; margin-bottom: 0.2rem; color: rgba(255,255,255,0.72);
+}
+.admin-nav a:hover, .admin-nav a.active { background: rgba(201,162,74,0.14); color: #fff; }
+.admin-nav a.active { border-left: 3px solid var(--color-accent); }
+.admin-nav .group-label { font-family: var(--font-mono); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.4); padding: var(--space-4) 0.9rem 0.4rem; }
+
+/* --- Topbar --- */
+.admin-topbar {
+  display: flex; align-items: center; justify-content: space-between; padding: var(--space-3);
+  background: var(--surface); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 20;
+  flex-wrap: wrap; gap: var(--space-2);
+}
+.admin-user { display: flex; align-items: center; gap: 0.6rem; font-size: 0.88rem; }
+.admin-user .avatar { width: 34px; height: 34px; border-radius: 50%; background: var(--color-primary); color: var(--color-accent-light); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.8rem; }
+.admin-main { padding: var(--space-3); }
+@media (min-width: 700px) {
+  .admin-topbar { padding: var(--space-3) var(--space-5); }
+  .admin-main { padding: var(--space-5); }
+}
+
+/* --- KPI cards --- */
+.kpi-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-3); margin-bottom: var(--space-5); }
+@media (min-width: 700px) { .kpi-grid { grid-template-columns: repeat(3, 1fr); gap: var(--space-4); } }
+@media (min-width: 1300px) { .kpi-grid { grid-template-columns: repeat(6, 1fr); } }
+.kpi-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md); padding: var(--space-4); }
+.kpi-card .label { font-size: 0.78rem; color: var(--text-soft); margin-bottom: 0.4rem; }
+.kpi-card .value { font-family: var(--font-display); font-size: 1.7rem; color: var(--color-primary); }
+[data-theme="dark"] .kpi-card .value { color: var(--color-accent-light); }
+.kpi-card .delta { font-size: 0.76rem; margin-top: 0.3rem; }
+.kpi-card .delta.up { color: var(--color-success); }
+.kpi-card .delta.down { color: var(--color-danger); }
+
+/* --- Data table --- */
+.table-toolbar { display: flex; justify-content: space-between; gap: var(--space-3); margin-bottom: var(--space-4); flex-wrap: wrap; }
+.table-toolbar .filters { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+.table-wrap { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md); overflow-x: auto; }
+table.data-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+table.data-table th {
+  text-align: left; padding: 0.9rem 1rem; background: var(--surface-alt); font-size: 0.72rem; text-transform: uppercase;
+  letter-spacing: 0.05em; color: var(--text-soft); border-bottom: 1px solid var(--border); white-space: nowrap;
+}
+table.data-table td { padding: 0.9rem 1rem; border-bottom: 1px solid var(--border); vertical-align: middle; }
+table.data-table tr:last-child td { border-bottom: none; }
+table.data-table tr:hover td { background: var(--surface-alt); }
+.row-actions { display: flex; gap: 0.4rem; }
+.icon-btn {
+  width: 32px; height: 32px; border-radius: var(--radius-sm); border: 1px solid var(--border); background: var(--surface);
+  display: flex; align-items: center; justify-content: center; color: var(--text-soft);
+}
+.icon-btn:hover { color: var(--color-primary); border-color: var(--color-accent); }
+.icon-btn.danger:hover { color: var(--color-danger); }
+
+/* --- Panels / modals --- */
+.modal-backdrop { position: fixed; inset: 0; background: rgba(8,41,34,0.55); display: flex; align-items: center; justify-content: center; z-index: 200; padding: var(--space-4); }
+.modal { background: var(--surface); border-radius: var(--radius-md); max-width: 640px; width: 100%; max-height: 88vh; overflow-y: auto; padding: var(--space-5); box-shadow: var(--shadow-lg); }
+.modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-4); }
+
+/* --- Login screen --- */
+.login-screen { min-height: 100vh; display: flex; align-items: center; justify-content: center; background: var(--color-primary-dark); padding: var(--space-4); }
+.login-card { background: var(--surface); border-radius: var(--radius-lg); padding: var(--space-6); max-width: 420px; width: 100%; box-shadow: var(--shadow-lg); }
+.login-card .brand-mark { margin: 0 auto var(--space-4); }
+
+/* --- Login/alerts --- */
+.alert { padding: var(--space-3) var(--space-4); border-radius: var(--radius-sm); font-size: 0.9rem; margin-bottom: var(--space-4); }
+.alert-error { background: #fbe6e2; color: var(--color-danger); border: 1px solid #f3c9c1; }
+.alert-success { background: #e3f2e7; color: var(--color-success); border: 1px solid #c3e6cd; }
+
+
