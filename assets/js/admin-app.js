@@ -193,6 +193,8 @@
             } catch (err) { flash('error', 'Could not update booking.'); btn.disabled = false; }
           } else if (action === 'edit') {
             openBookingEditModal(id, bookings);
+          } else if (action === 'message') {
+            openMessageModal(bookings.find(function (b) { return b.id === id; }));
           } else if (action === 'print') {
             printBooking(bookings.find(function (b) { return b.id === id; }));
           }
@@ -214,7 +216,9 @@
     if (!['cancelled', 'checked_out'].includes(b.status)) {
       actions += '<button class="icon-btn danger" data-action="cancel" data-id="' + b.id + '" title="Cancel"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="6" width="18" height="14" rx="2"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button>';
     }
+    actions += '<button class="icon-btn" data-action="notify" data-id="' + b.id + '" title="Message guest"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></button>';
     actions += '<button class="icon-btn" data-action="edit" data-id="' + b.id + '" title="Edit"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>';
+    actions += '<button class="icon-btn" data-action="message" data-id="' + b.id + '" title="Message guest"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></button>';
     actions += '<button class="icon-btn" data-action="print" data-id="' + b.id + '" title="Print"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg></button>';
 
     return '<tr>' +
@@ -259,6 +263,46 @@
         flash('success', 'Booking updated.');
         renderBookings();
       } catch (err) { flash('error', 'Could not update booking.'); }
+    });
+  }
+
+  function buildMessageText(b) {
+    var statusPhrase = {
+      pending: 'has been received and is pending confirmation',
+      confirmed: 'is confirmed',
+      cancelled: 'has been cancelled',
+      checked_in: 'is checked in — welcome!',
+      checked_out: 'is complete — thank you for staying with us',
+    }[b.status] || 'has an update';
+    return 'Hi ' + b.guestName + ', this is Urban Haven Lodge. Your booking ' + b.reference + ' for the ' + b.roomName +
+      ' (' + b.checkIn + ' to ' + b.checkOut + ') ' + statusPhrase + '. Total: ' + fmtMoney(b.totalAmount) + '. Thank you!';
+  }
+
+  function openMessageModal(b) {
+    if (!b) return;
+    var backdrop = document.createElement('div');
+    backdrop.className = 'modal-backdrop show';
+    backdrop.innerHTML =
+      '<div class="modal">' +
+        '<div class="modal-header"><h3 style="margin:0;">Message ' + escapeHtml(b.guestName) + '</h3><button type="button" class="icon-btn" data-close>✕</button></div>' +
+        '<div class="form-group full"><label>Message</label><textarea id="msg-text" rows="5">' + escapeHtml(buildMessageText(b)) + '</textarea></div>' +
+        '<div class="hero-ctas" style="margin-top:var(--space-3); justify-content:flex-start; gap:0.5rem;">' +
+          '<button type="button" class="btn btn-primary btn-sm" id="send-whatsapp">Send via WhatsApp</button>' +
+          '<button type="button" class="btn btn-outline btn-sm" id="send-email">Send via Email</button>' +
+        '</div>' +
+      '</div>';
+    document.body.appendChild(backdrop);
+    backdrop.querySelector('[data-close]').addEventListener('click', function () { backdrop.remove(); });
+    backdrop.addEventListener('click', function (e) { if (e.target === backdrop) backdrop.remove(); });
+    backdrop.querySelector('#send-whatsapp').addEventListener('click', function () {
+      var text = document.getElementById('msg-text').value;
+      var digits = (b.phone || '').replace(/[^0-9]/g, '');
+      window.open('https://wa.me/' + digits + '?text=' + encodeURIComponent(text), '_blank');
+    });
+    backdrop.querySelector('#send-email').addEventListener('click', function () {
+      var text = document.getElementById('msg-text').value;
+      var subject = 'Your Urban Haven Lodge booking ' + b.reference;
+      window.location.href = 'mailto:' + encodeURIComponent(b.email) + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(text);
     });
   }
 
